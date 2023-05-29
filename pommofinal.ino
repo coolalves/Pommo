@@ -3,7 +3,7 @@ const int pinPotenciometro = A0;
 int valorPotencia = 0;
 
 //intervalos
-const int listaIntervalosSessao[4] = {1, 2, 3, 4};
+const int listaIntervalosSessao[4] = {1, 1, 1, 1};
 int indiceIntervaloSessao = 0;
 unsigned long intervaloPausa = 0;
 unsigned long intervaloSessao = 0;
@@ -233,9 +233,8 @@ void loop() {
   valorPotencia = analogRead(pinPotenciometro);
   indiceIntervaloSessao = map(valorPotencia, 0, 687, 0, 3);
   //intervaloSessao = listaIntervalosSessao[indiceIntervaloSessao] * 60000;  // passa o intervalo para milisegundos
-  intervaloSessao = 5000;
+  intervaloSessao = 5000; //5 segundos para debugging
   //intervaloPausa = 1 * 60000;  // 1 min em milisegundos
-  intervaloPausa = 5000;
-  //Serial.println(intervaloSessao);
+  intervaloPausa = 4000; //4 segundos para debugging
   atualizaEstado(intervaloSessao, intervaloPausa);
 }
